@@ -1,6 +1,9 @@
 ////////////////////////
 // pi Darkroom Timer
-// V1.0 © 2013 3BOTS 3D Engineering GmbH
+// V1.0 © 2023 3BOTS 3D Engineering GmbH
+// written by ajanky
+//
+// license GNU GPLv3
 ////////////////////////
 
 
