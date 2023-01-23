@@ -120,7 +120,7 @@ void setup()
 
   // paperSens = 9.6;  //  Ilford Multigrade
   paperSens = 21;  // Foma Variospeed + FomaBrom Vario
-
+  
   dukaLight(1); // keep Duka on ( or assign Duka button )
   redLight = 1; 
 
@@ -163,7 +163,7 @@ void loop()
       newTime = TIMERMAX;
     }
     if (Time != newTime) showSeconds();
-
+    
       Time = newTime;
   }
 
@@ -286,6 +286,8 @@ void highArrow(float high, int color)  // show Lux of lights
 
 void calcTime()  // calculate time from lo_value and paper grade from exposure range
 {
+if (hi < lo){}
+else{std::swap(lo, hi);}
 ratio = lo / hi;
 calcGrade();
 Time = Sens / lo;
@@ -420,14 +422,14 @@ void F_correction()  // shows f-correction factor
   tft.setFreeFont(miniBold);
   tft.setTextColor(TFT_BLACK);
   tft.setTextSize(1);
-  tft.fillRect( 106, 16, 68, 24, TFT_BLACK);
-  tft.fillRect( 105, 0, 70, 15, TFT_RED);
-  tft.drawRect( 105, 0, 70, 40, TFT_RED);
+  tft.fillRect( 125, 16, 68, 24, TFT_BLACK);
+  tft.fillRect( 125, 0, 70, 15, TFT_RED);
+  tft.drawRect( 125, 0, 70, 40, TFT_RED);
   tft.setTextColor(TFT_BLACK);
-  tft.setCursor(111, 12); tft.print("F-CORR");
+  tft.setCursor(125+5, 12); tft.print("F-CORR");
   tft.setTextColor(TFT_RED);
   tft.setTextFont(4);
-  tft.setCursor(111,17); tft.printf("%+.1f f", factor);
+  tft.setCursor(125+5,17); tft.printf("%+.1f f", factor);
 }
 
 void DukaTimer()  // sets DukaTimer mode
@@ -435,14 +437,15 @@ void DukaTimer()  // sets DukaTimer mode
   tft.setFreeFont(miniBold);
   tft.setTextColor(TFT_BLACK);
   tft.setTextSize(1);
-  tft.fillRect( 1, 16, 98, 24, TFT_BLACK);
-  tft.fillRect( 0, 0, 100, 15, TFT_RED);
-  tft.drawRect( 0, 0, 100, 40, TFT_RED);
+  // tft.fillRect( 1, 16, 98, 24, TFT_BLACK);
+  tft.fillRect( 0, 0, 120, 45, TFT_BLACK);
+  tft.fillRect( 0, 0, 120, 15, TFT_RED);
+  tft.drawRect( 0, 0, 120, 40, TFT_RED);
   tft.setTextColor(TFT_BLACK);
-  tft.setCursor(10, 12); tft.print("DUKATIMER");
+  tft.setCursor(0+5, 12); tft.print("DUKATIMER");
   tft.setTextColor(TFT_RED);
   tft.setTextFont(4);
-  tft.setCursor(10,17); tft.printf("%.1f s", factor);
+  tft.setCursor(0+5,17); tft.printf("%.1f s", factor);
 }
 
 void lightMeter()  // sets LightMeter mode
@@ -450,14 +453,14 @@ void lightMeter()  // sets LightMeter mode
   tft.setFreeFont(miniBold);
   tft.setTextColor(TFT_BLACK);
   tft.setTextSize(1);
-  tft.fillRect( 1, 16, 98, 24, TFT_BLACK);
-  tft.fillRect( 0, 0, 100, 15, TFT_RED);
-  tft.drawRect( 0, 0, 100, 40, TFT_RED);
+  tft.fillRect( 1, 16, 120, 45, TFT_BLACK);
+  tft.fillRect( 0, 0, 120, 15, TFT_RED);
+  tft.drawRect( 0, 0, 120, 40, TFT_RED);
   tft.setTextColor(TFT_BLACK);
-  tft.setCursor(6, 12); tft.print("LIGHTMETER");
+  tft.setCursor(0+5, 12); tft.print("LIGHTMETER");
   tft.setTextColor(TFT_RED);
   tft.setTextFont(4);
-  tft.setCursor(3,17); tft.printf("sns: %.1f", paperSens);
+  tft.setCursor(0+5,17); tft.printf("sns: %.1f", paperSens);
 }
 
 void click()  // short audible tick
